@@ -1,9 +1,10 @@
 
-package com.archly.mhh.oversea.core.framework.net.http;
+package com.code.snippet;
 
 import static com.archly.mhh.oversea.core.utils.CharSet.CHARSET_UTF8;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.archly.mhh.oversea.core.utils.GsonUtils;
 import com.archly.mhh.oversea.core.utils.LogUtils;
@@ -32,7 +33,7 @@ class Utils {
             try {
                 closeable.close();
             } catch (Exception e) {
-                LogUtils.printStackTrace("Close source Error", e);
+                Log.e("Http", "Close source Error", e);
             }
         }
 
@@ -57,7 +58,7 @@ class Utils {
             buf = sb.toString();
             return buf;
         } catch (Exception e) {
-            LogUtils.printStackTrace("Read Ret Error", e);
+            Log.e("Http", "Read Ret Error", e);
         } finally {
             closeQuietly(reader);
         }

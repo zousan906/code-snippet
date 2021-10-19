@@ -1,34 +1,15 @@
-package com.archly.mhh.oversea.core.framework.net;
+package com.code.snippet;
 
 import android.util.Log;
 
-import com.archly.mhh.oversea.core.config.SettingConfig;
-import com.archly.mhh.oversea.core.encryption.DataAes;
-import com.archly.mhh.oversea.core.encryption.MD5;
-import com.archly.mhh.oversea.core.framework.callback.CallBackListener;
-import com.archly.mhh.oversea.core.framework.net.http.Callback;
-import com.archly.mhh.oversea.core.framework.net.http.HttpCall;
-import com.archly.mhh.oversea.core.framework.net.http.HttpClient;
-import com.archly.mhh.oversea.core.framework.net.http.NamedThreadFactory;
-import com.archly.mhh.oversea.core.framework.net.http.NetExecutor;
-import com.archly.mhh.oversea.core.framework.net.http.Request;
-import com.archly.mhh.oversea.core.framework.net.http.RequestBody;
-import com.archly.mhh.oversea.core.framework.net.http.Response;
-import com.archly.mhh.oversea.core.utils.GsonUtils;
-import com.archly.mhh.oversea.core.utils.LogUtils;
-import com.archly.mhh.oversea.core.utils.SortUtils;
-import com.archly.mhh.oversea.core.utils.TransUtils;
-
-import java.util.Map;
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class NetConnector {
-    private static final String TAG = "MHH.Net";
+    private static final String TAG = "Net";
     private HttpClient client;
 
     /**
@@ -111,39 +92,6 @@ public class NetConnector {
     }
 
 
-    public static void post(String url, Object param, CallBackListener<NetResponse> listener) {
-        try {
-            String data = GsonUtils.getGson().toJson(encode(param));
-            instance().post(url, data, new NetResponseAdapter() {
 
-
-                @Override
-                public void onFailure(int code, String errorMessage, Exception e) {
-                    listener.onFailed(code, errorMessage, null);
-                }
-
-                @Override
-                public void onResponse(NetResponse response) {
-                    listener.onSuccess(response);
-                }
-            });
-        } catch (Exception e) {
-            Log.e(TAG, e.getMessage(), e);
-        }
-    }
-
-    public static NetRequest encode(Object obj) throws Exception {
-        String json = GsonUtils.getGson().toJson(obj);
-        LogUtils.i(json);
-        DataAes aes = new DataAes();
-        String data = aes.encrypt(json);
-        Map<String, Object> map = TransUtils.obj2map(obj);
-        map = SortUtils.sort(map);
-        String unMd5 = TransUtils.map2string(map, "=", "&");
-        LogUtils.i(unMd5);
-        String sign = MD5.md5(unMd5 + SettingConfig.getSignKey());
-        String version = "v1";
-        return new NetRequest(data, sign, version);
-    }
 
 }

@@ -1,4 +1,4 @@
-package com.archly.mhh.oversea.core.framework.net.http;
+package com.code.snippet;
 
 
 import android.util.Log;
@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadFactory;

@@ -1,4 +1,4 @@
-package com.archly.mhh.oversea.core.framework.net.http;
+package com.code.snippet;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -39,7 +39,7 @@ public class Response implements Closeable {
         this.contentLength = conn.getContentLength();
         // 当 ResponseCode 小于 HTTP_BAD_REQUEST（400）时，获取返回信息
         if (this.code < HttpURLConnection.HTTP_BAD_REQUEST) {
-            this.responseBody = new Response.ResponseBody(conn.getInputStream());
+            this.responseBody = new ResponseBody(conn.getInputStream());
         } else {
             try {
                 this.errorMsg = Utils.streamAsString(conn.getErrorStream());

@@ -1,9 +1,7 @@
-package com.archly.mhh.oversea.core.framework.net.http;
+package com.code.snippet;
 
 import android.util.Log;
 
-import com.archly.mhh.oversea.core.framework.net.NetConnector;
-import com.archly.mhh.oversea.core.utils.LogUtils;
 
 import java.io.Closeable;
 import java.net.HttpURLConnection;

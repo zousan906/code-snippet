@@ -1,8 +1,7 @@
-package com.archly.mhh.oversea.core.framework.net;
+package com.code.snippet;
 
 import android.text.TextUtils;
 
-import com.archly.mhh.oversea.core.framework.net.http.Response;
 
 public abstract class NetCallback<T> {
 

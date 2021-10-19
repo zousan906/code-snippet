@@ -1,6 +1,5 @@
-package com.archly.mhh.oversea.core.framework.net.http;
+package com.code.snippet;
 
-import static com.archly.mhh.oversea.core.utils.CharSet.CHARSET_UTF8;
 
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
@@ -61,9 +60,9 @@ public abstract class RequestBody {
                         } else {
                             result.append("&");
                         }
-                        result.append(URLEncoder.encode(entry.getKey(), CHARSET_UTF8));
+                        result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
                         result.append("=");
-                        result.append(URLEncoder.encode(entry.getValue(), CHARSET_UTF8));
+                        result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
                     }
                     return result.toString();
                 } catch (UnsupportedEncodingException e) {

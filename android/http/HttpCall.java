@@ -1,6 +1,7 @@
-package com.archly.mhh.oversea.core.framework.net.http;
+package com.code.snippet;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.archly.mhh.oversea.core.utils.LogUtils;
 
@@ -149,7 +150,7 @@ public abstract class HttpCall {
                 isCallback = true;
                 callback.onResponse(originalCall, response);
             } catch (Exception e) {
-                LogUtils.printStackTrace(TAG, "Request task ex", e);
+                Log.e(TAG, "Request task ex", e);
                 if (!isCallback) {
                     callback.onFailure(originalCall, e);
                 }

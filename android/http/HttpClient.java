@@ -1,4 +1,4 @@
-package com.archly.mhh.oversea.core.framework.net.http;
+package com.code.snippet;
 
 import java.util.HashMap;
 import java.util.Map;
